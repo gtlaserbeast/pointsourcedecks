@@ -7,6 +7,7 @@ module.exports = function(app) {
       if (err){
         console.log(err);
       } else {
+        
         res.send(JSON.parse(data).decks[req.params.id]);
       }
     });

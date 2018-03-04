@@ -1,5 +1,5 @@
 
-module.exports = function(app, db) {
+module.exports = function(app) {
     app.get('randomNumber', (req, res) => {
       
   });
