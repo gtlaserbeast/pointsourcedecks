@@ -1,7 +1,16 @@
 
-module.exports = function(app, db) {
+module.exports = function(app) {
   var request = require('request'),
       fs = require('fs');
+  app.get('/deck/:id', (req, res) => {
+    fs.readFile('./decks.json', 'utf8', function readFileCallback(err, data){
+      if (err){
+        console.log(err);
+      } else {
+        res.send(JSON.parse(data).decks[req.params.id]);
+      }
+    });
+  });
 
   app.post('/randomDeck', (req, res) => {
     var storage;
