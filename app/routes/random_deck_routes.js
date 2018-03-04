@@ -24,6 +24,7 @@ app.post('/randomDeck', (req, res) => {
       generatedArray = body;
     });
     const deck = generatedArray.numbers;
+    res.send();
     // db.collection('decks').insert(deck, (err, result) => {
     //   if (err) { 
     //     res.send({ 'error': 'An error has occurred' }); 
