@@ -47,7 +47,7 @@ module.exports = function(app) {
       generatedArray = JSON.parse(body); //JSONify deck being created
       storage.decks.push(generatedArray.numbers); //store created deck's numbers
       fs.writeFile('./decks.json', JSON.stringify(storage), 'utf8'); //write full list of decks
-      console.log('Created deck #' + storage.decks.length);
+      console.log('Created deck #' + (storage.decks.length - 1));
     });
   });
 };
