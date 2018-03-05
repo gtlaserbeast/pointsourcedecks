@@ -1,6 +1,7 @@
 To run:
 clone repo
 ensure pwd is this repo
+npm install
 npm run dev
 
 make an empty POST to localhost:8000/randomDeck
