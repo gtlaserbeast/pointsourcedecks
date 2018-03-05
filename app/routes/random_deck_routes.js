@@ -10,7 +10,6 @@ module.exports = function(app) {
       if (err){
         console.log(err);
       } else {
-        // console.log('data is', data);
         orderedDeck = JSON.parse(data);
       }
     });
