@@ -11,18 +11,18 @@ module.exports = function(app) {
         console.log(err);
       } else {
         orderedDeck = JSON.parse(data);
-      }
-    });
-    //convert number to card and return
-    fs.readFile('./decks.json', 'utf8', function readFileCallback(err, data){
-      if (err){
-        console.log(err);
-      } else {
-        let thisDeckOfCards = [];
-        _.each(JSON.parse(data).decks[req.params.id], function(_number) {
-          thisDeckOfCards.push(orderedDeck.orderedDeck[_number]);
+        //convert number to card and return
+        fs.readFile('./decks.json', 'utf8', function readFileCallback(err, data){
+          if (err){
+            console.log(err);
+          } else {
+            let thisDeckOfCards = [];
+            _.each(JSON.parse(data).decks[req.params.id], function(_number) {
+              thisDeckOfCards.push(orderedDeck.orderedDeck[_number]);
+            });
+            res.send(thisDeckOfCards);
+          }
         });
-        res.send(thisDeckOfCards);
       }
     });
   });
