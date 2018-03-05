@@ -1,14 +1,29 @@
 
 module.exports = function(app) {
-  var request = require('request'),
-      fs = require('fs');
+  const request = require('request'),
+        fs = require('fs'),
+        _ = require('underscore');
   app.get('/deck/:id', (req, res) => {
+    let orderedDeck = {}
+    //load key for cards
+    fs.readFile('./full_deck.json', 'utf8', function readFileCallback(err, data){
+      if (err){
+        console.log(err);
+      } else {
+        // console.log('data is', data);
+        orderedDeck = JSON.parse(data);
+      }
+    });
+    //convert number to card and return
     fs.readFile('./decks.json', 'utf8', function readFileCallback(err, data){
       if (err){
         console.log(err);
       } else {
-        
-        res.send(JSON.parse(data).decks[req.params.id]);
+        let thisDeckOfCards = [];
+        _.each(JSON.parse(data).decks[req.params.id], function(_number) {
+          thisDeckOfCards.push(orderedDeck.orderedDeck[_number]);
+        });
+        res.send(thisDeckOfCards);
       }
     });
   });
